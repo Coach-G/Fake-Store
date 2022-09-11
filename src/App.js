@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div>
-      <div className="body">
+      <div className="container">
       <div className='selectButton'>
         <select onChange={handleCategoryChange}>
           <option value=''>All</option>
@@ -41,7 +41,7 @@ function App() {
         </select>
       </div>
   
-        <div className='container'>
+        <div className='card-container'>
           {filteredList.map((element, index) => (
             <Item {...element} key={index} />
           ))}

@@ -2,14 +2,14 @@
   margin: 0;
 }
 
-.body {
+.container {
   display: flex;
   flex-direction: column;
   min-width: 350px;
   
 }
 
-.container {
+.card-container {
   text-align: center;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -69,7 +69,7 @@ select {
 }
 
 @media (min-width: 600px) {
-  .container {
+  .card-container {
     display: flex;
     height: 400px;
   }
