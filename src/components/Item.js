@@ -1,12 +1,15 @@
 import React from 'react';
 
 
-const Item = ({ title, rating, price, image }) => (
+
+
+const Item = ({ title, rating, price, image, handleClick, index}) => (
   <div className='item-container'>
     <img className='image' src={image} alt='' />
-    <div className='rating'> <i class="fa-solid fa-star"></i> {rating.rate}</div>
+    <div className='rating'> <i className="fa-regular fa-star"></i> {rating.rate}</div>
     <div className='title'>{title}</div>
-    <button className='price'>Buy</button>
+    <button className='price' onClick={() => 
+      {handleClick(index)}}>Add to cart</button>
     
   </div>
 );

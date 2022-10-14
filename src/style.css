@@ -7,12 +7,15 @@
   flex-direction: column;
   min-width: 350px;
   
+  
 }
 
 .card-container {
   text-align: center;
   overflow-y: hidden;
   overflow-x: scroll;
+  
+  
 }
 
 .item-container {
@@ -22,11 +25,11 @@
   min-height: 250px;
   border: 1px solid black;
   text-align: center;
-
+  max-height: 350px;
   padding: 5px;
   margin: 20px;
 
-  min-width: 260px;
+  min-width: 240px;
 }
 
 .item-container:hover {
@@ -53,8 +56,7 @@
 }
 
 .price {
-  border: 1px solid black;
-  border-radius: 50px;
+  font-size: small;
   flex: 0.2;
   margin-bottom: 5px;
 }
@@ -73,4 +75,10 @@ select {
     display: flex;
     height: 400px;
   }
+}
+
+.fa-star {
+  color: rgb(236, 236, 143);
+  -webkit-text-stroke: .5px black;
+  
 }
