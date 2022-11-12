@@ -45,8 +45,11 @@
 }
 
 .rating {
+  display:flex;
+  align-self: end;
   margin-bottom: 10px;
   flex: 0.2;
+  align-items: center;
 }
 
 .title {
@@ -81,4 +84,16 @@ select {
   color: rgb(236, 236, 143);
   -webkit-text-stroke: .5px black;
   
+}
+
+.cart {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+#zeroItems {
+  margin: 100px auto;
+  color: red;
 }

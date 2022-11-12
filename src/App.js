@@ -8,27 +8,14 @@ function App() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
   const [cartCount, setCartCount] = useState(0);
- 
-  
- useEffect(() => {
+
+  useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
       });
   }, []);
-  console.log(products)
-
-  function addToCart(id) {
-    setCartCount((prev) => prev + 1);
-    setProducts(prevProducts => {
-      return prevProducts.filter(
-        (item, index) => {
-          return index !== id
-        } 
-        )
-      });
-  }
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
@@ -42,13 +29,29 @@ function App() {
   }
   var filteredList = useMemo(getFilteredList, [selectedCategory, products]);
 
+  function addToCart(id) {
+    setCartCount((prev) => prev + 1);
+
+    setProducts((prevProducts) => {
+      return prevProducts.filter((item) => {
+        return item.id !== id;
+      });
+    });
+  }
+
+  // function hasProducts() {
+  //   if(filteredList.length > 1) {
+
+  //   }
+  // }
+
   return (
     <div>
       <div className='container'>
         <Cart count={cartCount} />
         <div className='selectButton'>
           <select onChange={handleCategoryChange}>
-            <option value=''>All</option>
+            <option value='Products'>All</option>
             <option value="men's clothing">Men's Clothing</option>
             <option value="women's clothing">Women's Clothing</option>
             <option value='electronics'>Electronics</option>
@@ -56,13 +59,15 @@ function App() {
           </select>
         </div>
 
-        <div className='card-container'>
-          {filteredList.map((element, index) => (
-            <Item 
-            {...element} 
-            key={index} id={index} handleClick={addToCart} />
-          ))}
-        </div>
+        {filteredList.length > 0 ? (
+          <div className='card-container'>
+            {filteredList.map((element, index) => (
+              <Item {...element} key={index} handleClick={addToCart} />
+            ))}
+          </div>
+        ) : (
+          <div id='zeroItems'>There are 0 {`"${selectedCategory}"`} left</div>
+        )}
       </div>
     </div>
   );
