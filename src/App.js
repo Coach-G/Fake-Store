@@ -6,7 +6,9 @@ import Cart from './components/Cart';
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
+console.log(products)
+
+  const [selectedCategory, setSelectedCategory] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ function App() {
   }
 
   function getFilteredList() {
-    if (!selectedCategory) {
+    if (selectedCategory === "allProducts") {
       return products;
     }
     return products.filter((item) => item.category === selectedCategory);
@@ -51,7 +53,7 @@ function App() {
         <Cart count={cartCount} />
         <div className='selectButton'>
           <select onChange={handleCategoryChange}>
-            <option value='Products'>All</option>
+            <option value='allProducts'>All</option>
             <option value="men's clothing">Men's Clothing</option>
             <option value="women's clothing">Women's Clothing</option>
             <option value='electronics'>Electronics</option>
@@ -59,15 +61,13 @@ function App() {
           </select>
         </div>
 
-        {filteredList.length > 0 ? (
+        {filteredList && 
           <div className='card-container'>
-            {filteredList.map((element, index) => (
-              <Item {...element} key={index} handleClick={addToCart} />
+            {filteredList.map((allProducts, index) => (
+              <Item {...allProducts} key={index} handleClick={addToCart} />
             ))}
           </div>
-        ) : (
-          <div id='zeroItems'>There are 0 {`"${selectedCategory}"`} left</div>
-        )}
+}
       </div>
     </div>
   );

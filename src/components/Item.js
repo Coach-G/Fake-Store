@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
 const Item = (props) => (
   <div className='item-container'>
     <div className='rating'> <i className="fa-regular fa-star"></i> {props.rating.rate}</div>
