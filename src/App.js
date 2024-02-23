@@ -6,7 +6,7 @@ import Cart from './components/Cart';
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
@@ -24,19 +24,22 @@ function App() {
   function getFilteredList() {
     if (!selectedCategory) {
       return products;
-    }
-    return products.filter((item) => item.category === selectedCategory);
+    } else if (selectedCategory === 'Products'){
+      return products;
+    } else {
+      return products.filter((item) => item.category === selectedCategory);}
+    
   }
   var filteredList = useMemo(getFilteredList, [selectedCategory, products]);
 
   function addToCart(id) {
     setCartCount((prev) => prev + 1);
 
-    setProducts((prevProducts) => {
-      return prevProducts.filter((item) => {
-        return item.id !== id;
-      });
-    });
+    // setProducts((prevProducts) => {
+    //   return prevProducts.filter((item) => {
+    //     return item.id !== id;
+    //   });
+    // });
   }
 
   // function hasProducts() {
@@ -59,15 +62,13 @@ function App() {
           </select>
         </div>
 
-        {filteredList.length > 0 ? (
+        
           <div className='card-container'>
             {filteredList.map((element, index) => (
               <Item {...element} key={index} handleClick={addToCart} />
             ))}
           </div>
-        ) : (
-          <div id='zeroItems'>There are 0 {`"${selectedCategory}"`} left</div>
-        )}
+        
       </div>
     </div>
   );

@@ -23,6 +23,8 @@
   flex-direction: column;
   align-items: center;
   min-height: 250px;
+  height: 350px;
+  
   border: 1px solid black;
   text-align: center;
   max-height: 350px;
@@ -46,8 +48,9 @@
 
 .rating {
   display:flex;
-  align-self: end;
+  align-self: flex-end;
   margin-bottom: 10px;
+  gap: 5px;
   flex: 0.2;
   align-items: center;
 }
@@ -56,6 +59,7 @@
   font-size: 1rem;
   margin-bottom: 5px;
   flex: 0.5;
+  
 }
 
 .price {
@@ -65,7 +69,7 @@
 }
 
 .price:hover {
-  background-color: rgb(236, 236, 143);
+  background-color: rgb(198, 198, 192);
 }
 
 select {
@@ -81,16 +85,17 @@ select {
 }
 
 .fa-star {
-  color: rgb(236, 236, 143);
-  -webkit-text-stroke: .5px black;
+  color: rgb(238, 242, 19);
+  -webkit-text-stroke: .3px black;
   
 }
 
 .cart {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding-top: 1rem;
+  gap: 5px;
 }
 
 #zeroItems {
