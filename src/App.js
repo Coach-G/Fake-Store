@@ -6,13 +6,7 @@ import Cart from './components/Cart';
 
 function App() {
   const [products, setProducts] = useState([]);
-<<<<<<< HEAD
   const [selectedCategory, setSelectedCategory] = useState(null);
-=======
-console.log(products)
-
-  const [selectedCategory, setSelectedCategory] = useState([]);
->>>>>>> ad2d44f266dbe86e71b8bd0d5a5172f7bad9e0d3
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
